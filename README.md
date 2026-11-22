@@ -1,37 +1,48 @@
 # WallShift
 
-WallShift is a super lightweight Windows 11 utility for event crews who need to change the desktop wallpaper quickly. Drag the event artwork onto a small desktop widget before the show. When the event ends, double-click the widget to restore your personal or company wallpaper.
+[Tiếng Việt](README.vi.md) · [Download for Windows](https://github.com/kidrainzboy/WallShift/releases/latest)
 
-- **Drop an image, a slideshow, or a video.** Use PNG or JPEG images, or loop a muted H.264 MP4. Slideshows support 5, 10, 15, and 30 seconds per image.
-- **Choose where it goes.** Apply the next wallpaper to one display or all displays, with six Windows wallpaper fit modes.
-- **Recover from a misdrop.** Undo the last change, or save the current video frame as a still wallpaper.
-- **Keep it within reach.** Move and resize the widget, use the system tray menu, or enable Start with Windows.
+WallShift is a super lightweight Windows 11 utility for event crews who need to change the desktop wallpaper quickly. Drag event artwork onto a small desktop widget before the show. When the event ends, double-click the widget to restore your personal or company wallpaper.
 
-Built in C++ with Win32, Media Foundation, and Direct3D 11. Available in English and Vietnamese.
+## Features
 
-## Sử dụng
+- Drop a PNG or JPEG image, multiple images for a slideshow, or one H.264 MP4. Videos loop without sound. Slideshows support 5, 10, 15, and 30 seconds per image.
+- Choose one display or all displays for the next wallpaper change. Pick Fill, Fit, Stretch, Tile, Center, or Span. Windows applies the image and slideshow fit setting system-wide.
+- Undo the last change in the current session or save the current video frame as a still wallpaper.
+- Drag the widget to move it. Drag its bottom-right grip to resize it between 48 and 128 device-independent pixels. You can also use the tray menu.
+- Switch between English and Vietnamese and optionally start WallShift when you sign in to Windows.
 
-- Chuột phải vào widget hoặc biểu tượng khay hệ thống. Giao diện mặc định là tiếng Anh. Chọn **Language → Tiếng Việt** để đổi ngay.
-- Chọn **Choose default wallpaper…** để lưu ảnh nền cá nhân hoặc công ty. Nhấp đúp widget để áp dụng ảnh này lên tất cả màn hình.
-- Thả một ảnh **PNG, JPG hoặc JPEG** để đặt nền tĩnh. Thả nhiều ảnh để chạy album theo tên file. Widget hiện biểu tượng **Điểm thả** khi giữ tệp hợp lệ trên widget. **Slideshow interval** có các mốc **5, 10, 15 và 30 giây/ảnh**.
-- Thả một video **MP4 (H.264)** để phát lặp và tắt tiếng. **Use current video frame** chuyển khung hình đang phát thành ảnh nền tĩnh.
-- **Wallpaper fit** có sáu chế độ của Windows. **Display for the next change** chọn màn hình cho lần thả tiếp theo. **Undo last change** hoàn tác lần đổi gần nhất trong phiên đang chạy.
-- Kéo thân widget để di chuyển. Kéo góc dưới bên phải để đổi kích thước trong khoảng **48–128 DIP**. **Widget size and position** có các cỡ đặt sẵn và lệnh đưa về góc trên bên phải.
-- Bật **Start with Windows** để mở WallShift khi đăng nhập tài khoản Windows hiện tại. Tùy chọn mặc định tắt. Nếu chuyển file thực thi sang vị trí mới, mở file ở vị trí mới rồi tắt và bật lại tùy chọn để cập nhật đường dẫn.
+## Quick start
 
-Ảnh mặc định, ảnh chụp từ video và cài đặt nằm trong `%LOCALAPPDATA%\WallShift`. Ảnh và video thả vào được đọc từ đường dẫn gốc.
+1. Download the x64 executable and `SHA256SUMS.txt` from the [latest release](https://github.com/kidrainzboy/WallShift/releases/latest).
+2. Run the executable from a folder you plan to keep. WallShift opens a desktop widget and adds an icon to the notification area.
+3. Right-click either icon and select **Choose default wallpaper…**.
+4. Drop your wallpaper files onto the widget. Double-click it when you want your default wallpaper back.
 
-## Build
+To check the v1.0.0 executable, run the following in PowerShell and compare the result with the corresponding line in `SHA256SUMS.txt`.
 
-Dùng Windows 11, Visual Studio với workload **Desktop development with C++**, Windows SDK và CMake.
+```powershell
+Get-FileHash -Algorithm SHA256 -LiteralPath .\WallShift-1.0.0-windows-x64.exe
+```
+
+WallShift stores settings, the default image, and captured video frames in `%LOCALAPPDATA%\WallShift`. Keep event files in place while using them. If you move the executable after enabling **Start with Windows**, open it at its new location and toggle the option off and on to refresh the shortcut.
+
+## Build from source
+
+Use Visual Studio with the **Desktop development with C++** workload, a Windows SDK, and CMake 3.20 or newer. Run these commands from the repository root.
 
 ```powershell
 cmake -S . -B build -A x64
 cmake --build build --config Release
 ```
 
-File build nằm tại `build/Release/WallShift.exe`. Bản để sử dụng được đặt ở `release/WallShift.exe` để giữ một đường dẫn ổn định khi bật tự khởi động.
+The executable is `build/Release/WallShift.exe`. The app uses C++20, Win32, Media Foundation, and Direct3D 11. Live video wallpaper depends on the Explorer desktop layer and a compatible H.264 decoder.
 
-## License
+## Project links
 
-WallShift is released under the [MIT License](LICENSE).
+- [Changelog](CHANGELOG.md)
+- [Contributing](CONTRIBUTING.md) and [Code of conduct](CODE_OF_CONDUCT.md)
+- [Report an issue](https://github.com/kidrainzboy/WallShift/issues/new/choose) or [report a vulnerability privately](SECURITY.md)
+- [Windows build checks](https://github.com/kidrainzboy/WallShift/actions/workflows/windows-build.yml)
+
+WallShift is open source under the [MIT License](LICENSE).

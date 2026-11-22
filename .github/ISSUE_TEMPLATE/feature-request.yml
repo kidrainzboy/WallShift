@@ -1,0 +1,17 @@
+name: Feature request
+description: Suggest an improvement to WallShift.
+body:
+  - type: textarea
+    id: workflow
+    attributes:
+      label: What are you trying to do?
+      description: Describe the workflow and what gets in the way today.
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: What would help?
+      description: Describe the behavior you would like to see.
+    validations:
+      required: true

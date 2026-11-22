@@ -1,0 +1,31 @@
+name: Bug report
+description: Report something that is not working as expected.
+body:
+  - type: input
+    id: version
+    attributes:
+      label: WallShift version
+      placeholder: 1.0.0
+    validations:
+      required: true
+  - type: input
+    id: environment
+    attributes:
+      label: Windows build and display setup
+      description: Include display count and scaling. Include the codec for video issues.
+      placeholder: Windows 11 25H2, two displays, 150% and 100% scaling
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+    validations:
+      required: true
+  - type: textarea
+    id: outcome
+    attributes:
+      label: Expected and actual behavior
+      description: You can attach a non-sensitive screenshot or sample file.
+    validations:
+      required: true

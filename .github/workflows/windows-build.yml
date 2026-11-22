@@ -1,0 +1,35 @@
+name: Windows build
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  release-build:
+    runs-on: windows-2025
+    steps:
+      - name: Check out source
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Configure x64
+        run: cmake -S . -B build -A x64
+      - name: Build Release
+        run: cmake --build build --config Release --parallel
+      - name: Verify executable metadata
+        shell: pwsh
+        run: |
+          $version = (Get-Item -LiteralPath 'build/Release/WallShift.exe').VersionInfo
+          $project = Select-String -LiteralPath 'CMakeLists.txt' -Pattern '^project\(WallShift VERSION (\d+\.\d+\.\d+)'
+          if (-not $project -or $version.ProductVersion -ne $project.Matches[0].Groups[1].Value) {
+              throw 'The executable version does not match the CMake project version.'
+          }
+          if ($version.ProductName -ne 'WallShift' -or $version.OriginalFilename -ne 'WallShift.exe') {
+              throw 'Unexpected executable metadata.'
+          }
