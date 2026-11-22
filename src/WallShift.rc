@@ -1,0 +1,31 @@
+#include "resource.h"
+#include "version.h"
+#include <winver.h>
+
+1 24 "WallShift.manifest"
+IDI_WALLSHIFT ICON "wallshift-icon.ico"
+IDR_MENU_LOGO RCDATA "wallshift-logo.png"
+
+1 VERSIONINFO
+FILEVERSION WALLSHIFT_VERSION_NUMBER
+PRODUCTVERSION WALLSHIFT_VERSION_NUMBER
+FILEOS VOS_NT_WINDOWS32
+FILETYPE VFT_APP
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "040904B0"
+        BEGIN
+            VALUE "FileDescription", "WallShift"
+            VALUE "FileVersion", WALLSHIFT_VERSION_TEXT
+            VALUE "InternalName", "WallShift"
+            VALUE "OriginalFilename", "WallShift.exe"
+            VALUE "ProductName", "WallShift"
+            VALUE "ProductVersion", WALLSHIFT_VERSION_TEXT
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x0409, 1200
+    END
+END

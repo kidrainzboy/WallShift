@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 96 96" role="img" aria-labelledby="title">
+  <title id="title">WallShift app icon</title>
+  <rect width="96" height="96" rx="22" fill="#18304A"/>
+  <path fill="#F4F7FC" d="M 22,17 H 59 L 49,30 H 29 V 63 H 20 Q 13,63 13,56 V 26 Q 13,17 22,17 Z"/>
+  <path fill="#80B6F2" d="M 44,29 H 75 Q 83,29 83,37 V 71 Q 83,80 74,80 H 40 Q 32,80 32,72 V 47 Z"/>
+  <path fill="#18304A" d="M 47,50 H 61 L 56,45 Q 55,44 56,43 L 59,40 L 72,53 L 59,66 L 56,63 Q 55,62 56,61 L 61,56 H 47 Q 44,56 44,53 Q 44,50 47,50 Z"/>
+</svg>
